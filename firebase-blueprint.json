@@ -1,0 +1,30 @@
+{
+  "entities": {
+    "UserProfile": {
+      "collection": "users",
+      "description": "User accounts with role assignments (admin or user)",
+      "fields": {
+        "id": { "type": "string", "description": "Firebase Auth UID" },
+        "email": { "type": "string", "description": "User email address" },
+        "displayName": { "type": "string", "description": "Display name" },
+        "role": { "type": "string", "description": "Role: 'admin' or 'user'" },
+        "createdAt": { "type": "string", "description": "ISO timestamp" },
+        "updatedAt": { "type": "string", "description": "ISO timestamp" }
+      }
+    },
+    "Tournament": {
+      "collection": "tournaments",
+      "description": "Tournament state, config, teams, matches and playoffs",
+      "fields": {
+        "id": { "type": "string", "description": "Tournament ID (e.g. 'current')" },
+        "config": { "type": "object", "description": "Tournament configuration" },
+        "teams": { "type": "array", "description": "List of teams" },
+        "matches": { "type": "array", "description": "List of matches" },
+        "playoffs": { "type": "array", "description": "Playoff brackets" },
+        "scorers": { "type": "array", "description": "Top scorers" },
+        "updatedAt": { "type": "string", "description": "ISO timestamp" },
+        "updatedBy": { "type": "string", "description": "Admin UID who last updated" }
+      }
+    }
+  }
+}

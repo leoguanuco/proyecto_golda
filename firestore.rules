@@ -1,0 +1,25 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    // User profiles
+    match /users/{userId} {
+      // Allow reading user profiles so app can verify credentials and display names
+      allow read: if true;
+      // Allow creating and updating profiles
+      allow create, update: if true;
+      allow delete: if isAuthenticated();
+    }
+
+    // Tournament data
+    match /tournaments/{tournamentId} {
+      // Anyone can read and update tournament standings and fixtures
+      allow read, write: if true;
+    }
+  }
+}
+
